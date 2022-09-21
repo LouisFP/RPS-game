@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors Game!</title>
+    <link rel="stylesheet" href="rps-game.css" />
+  </head>
+  <body>
+    <h1>Rock, Paper, Scissors Game!</h1>
+    <script>
+      let userScore = 0;
+      let computerScore = 0;
+      // This is a function which will randomly select one of rock, paper or scissors
+      // Randomise an integer 0, 1 or 2
+      // Creating a conditional statement, (maybe with switch statements), that outputs a string of 'rock', 'paper' or 'scissors'
+      // which is unique for each number
+      // Firstly, a function which randomises the integer:
+      // This will take the random 0 inclusive to 1 exclusive and then multiply by number to get a random number between 0 and number
+      // This floor function produces only integers
+      function Math_random(num) {
+        return Math.floor(Math.random(num) * +num);
+      }
+      // We now set a variable with randomises 0-2, this will change depending on different iterations of the game
+      // then add a conditional loop which assigns to each value a number a string
+      const getComputerChoice = () => {
+        // const gameArray = ['Rock', 'Paper', 'Scissors'];
+        // const random_num=Math_random(3);
+        // const computerSelection = gameArray[random_num];
+        // return computerSelection;
+        //   };
+        switch (Math_random(3)) {
+          case 0:
+            return "Rock";
+            break;
+          case 1:
+            return "Paper";
+            break;
+          case 2:
+            return "Scissors";
+            break;
+        }
+      };
+      //  Making the variables which indicate that the player and computer chose.
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection == "Rock" && computerSelection == "Rock") {
+          return "You have tied! You both chose Rock";
+        } else if (playerSelection == "Rock" && computerSelection == "Paper") {
+          computerScore++;
+          return "You lose! Paper beats Rock";
+        } else if (
+          playerSelection == "Rock" &&
+          computerSelection == "Scissors"
+        ) {
+          userScore++;
+          return "You win! Rock beats Scissors";
+        } else if (
+          playerSelection == "Scissors" &&
+          computerSelection == "Rock"
+        ) {
+          computerScore++;
+          return "You lose! Rock beats Scissors";
+        } else if (
+          playerSelection == "Scissors" &&
+          computerSelection == "Paper"
+        ) {
+          userScore++;
+          return "You win! Scissors beats Paper";
+        } else if (
+          playerSelection == "Scissors" &&
+          computerSelection == "Scissors"
+        ) {
+          return "You have tied! You both chose Scissors";
+        } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+          userScore++;
+          return "You win! Paper beats Rock";
+        } else if (
+          playerSelection == "Paper" &&
+          computerSelection == "Scissors"
+        ) {
+          computerScore++;
+          return "You lose! Scissors beat Paper";
+        } else if (playerSelection == "Paper" && computerSelection == "Paper") {
+          return "You have tied! You both chose Paper";
+        }
+      }
+    //   Prompt for Rock, Paper or Scissors and a function which will return the answer with a capital letter
+    //   at the start and lower case else   
+      let promptPlayer = prompt('Choose Rock, Paper or Scissors Please');
+
+    function normalise(str) {
+        let newString = str[0].toUpperCase() + (str.substring(1)).toLowerCase();
+        return newString;
+    }
+
+    //   Assigning a new variable name and creating a game function which plays and counts the scores of each player
+      let playerSelection = normalise(promptPlayer);
+      let computerSelection = getComputerChoice();
+      const game = () => {
+        for (let i = 0; i < 15; i++) {
+          let computerSelection = getComputerChoice();
+          playRound(playerSelection, computerSelection);
+          console.log([userScore, computerScore]);
+        }
+        if (userScore > computerScore) {
+             console.log('Well done! You have beaten the machine!');
+            }  else if (computerScore > userScore) {
+             console.log('Oh no! You have been beaten by the machine!');
+            } else if (computerScore == userScore) {
+             console.log('So close! You have tied!');
+            }
+      };
+      console.log(game());
+    </script>
+  </body>
+</html>
