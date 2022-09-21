@@ -13,17 +13,9 @@
       let userScore = 0;
       let computerScore = 0;
       // This is a function which will randomly select one of rock, paper or scissors
-      // Randomise an integer 0, 1 or 2
-      // Creating a conditional statement, (maybe with switch statements), that outputs a string of 'rock', 'paper' or 'scissors'
-      // which is unique for each number
-      // Firstly, a function which randomises the integer:
-      // This will take the random 0 inclusive to 1 exclusive and then multiply by number to get a random number between 0 and number
-      // This floor function produces only integers
       function Math_random(num) {
         return Math.floor(Math.random(num) * +num);
       }
-      // We now set a variable with randomises 0-2, this will change depending on different iterations of the game
-      // then add a conditional loop which assigns to each value a number a string
       const getComputerChoice = () => {
         // const gameArray = ['Rock', 'Paper', 'Scissors'];
         // const random_num=Math_random(3);
@@ -42,7 +34,7 @@
             break;
         }
       };
-      //  Making the variables which indicate that the player and computer chose.
+      //  Making the variables which indicate that the player and computer chose
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == "Rock" && computerSelection == "Rock") {
           return "You have tied! You both chose Rock";
@@ -85,8 +77,8 @@
           return "You have tied! You both chose Paper";
         }
       }
-    //   Prompt for Rock, Paper or Scissors and a function which will return the answer with a capital letter
-    //   at the start and lower case else   
+    //   Prompt for Rock, Paper or Scissors and a function which will return the
+    //   answer with a capital letter at the start and lower case else   
       let promptPlayer = prompt('Choose Rock, Paper or Scissors Please');
 
     function normalise(str) {
@@ -94,7 +86,8 @@
         return newString;
     }
 
-    //   Assigning a new variable name and creating a game function which plays and counts the scores of each player
+    //   Assigning a new variable name and creating a game function which plays 
+    //   and counts the scores of each player
       let playerSelection = normalise(promptPlayer);
       let computerSelection = getComputerChoice();
       const game = () => {
