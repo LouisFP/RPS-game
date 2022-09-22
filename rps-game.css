@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+ *{
+    border: solid red;
+ }
+
+ button {
+    margin: 1rem;
+    width: 10rem;
+    height: 10rem;
+
+ }
