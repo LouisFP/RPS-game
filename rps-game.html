@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors Game!</title>
     <link rel="stylesheet" href="rps-game.css" />
+    <style src="rps-game.js"></style>
   </head>
   <body>
     <h1>Rock, Paper, Scissors Game!</h1>
+    <div class="container">
+    <button id="Rock">Rock</button>
+    <button id="Scissors">Scissors</button>
+    <button id="Paper">Paper</button>
+    </div>
     <script>
       let userScore = 0;
       let computerScore = 0;
@@ -79,7 +85,7 @@
       }
     //   Prompt for Rock, Paper or Scissors and a function which will return the
     //   answer with a capital letter at the start and lower case else   
-      let promptPlayer = prompt('Choose Rock, Paper or Scissors Please');
+      // let promptPlayer = prompt('Choose Rock, Paper or Scissors Please');
 
     function normalise(str) {
         let newString = str[0].toUpperCase() + (str.substring(1)).toLowerCase();
@@ -104,7 +110,8 @@
              console.log('So close! You have tied!');
             }
       };
-      console.log(game());
+      console.log(game);
+
     </script>
   </body>
 </html>
