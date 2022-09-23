@@ -106,21 +106,22 @@
       btns.forEach((button) => {
         button.addEventListener("click", (e) => {
           let computerSelection = getComputerChoice();
-          if (userScore < 5 && computerScore < 5) {
-            playRound(e.target.textContent, computerSelection);
-            userCount.textContent = "Your Score: " + `${userScore}`;
-            computerCount.textContent = "The enemies' Score: " + `${computerScore}`;
-          } else if (userScore == 5) {
+          playRound(e.target.id, computerSelection);
+          userCount.textContent = "Your Score: " + `${userScore}`;
+          computerCount.textContent =
+            "The enemies' Score: " + `${computerScore}`;
+          if (userScore == 5) {
             resultBox.textContent = "Well done! You have beaten the machine!";
-          } else if (computerScore == 5) {
+          }
+          if (computerScore == 5) {
             resultBox.textContent =
               "Oh no! You have been beaten by the machine!";
           }
         });
       });
 
-      //   Assigning a new variable name and creating a game function which plays
-      //   and counts the scores of each player
+      //   Assigning a new variable name and creating a game function which
+      //   plays and counts the scores of each player
 
       // const game = () => {
       //     let computerSelection = getComputerChoice();
