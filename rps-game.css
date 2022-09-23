@@ -1,10 +1,13 @@
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
 h1 {
   text-align: center;
   font-weight: bold;
+  font-size: 30px;
 }
 
 div {
@@ -13,11 +16,15 @@ div {
   align-items: center;
 }
 
-/* *{
-    border: solid red;
- } */
+/* *{ border: solid red;} */
 
-button {
+.instruct {
+    font-size: 24px;
+}
+
+#Rock,
+#Scissors,
+#Paper {
   margin: 1rem;
   width: 10rem;
   height: 10rem;
@@ -29,6 +36,50 @@ div.result {
 }
 
 div.round {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 400px;
+  height: 200px;
+  border: 4px solid black;
+}
+
+.roundResult {
+    height: 20px;
+}
+
+.footer {
+  margin-top: auto;
+  border-top: solid 2px black;
+  padding: 10px;
+}
+
+button#Rock {
+    background-image: url(./img/rock.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -2rem;
+}
+
+button#Paper {
+    background-image: url(./img/paper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -4.5rem;
+}
+
+button#Scissors {
+    background-image: url(./img/scissors.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -2rem;
+}
+
+p {
+    font-size: 20px;
+}
+
+button.playAgain {
+    margin: 20px;
+    padding: 6px 12px;
 }
