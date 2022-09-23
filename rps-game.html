@@ -11,17 +11,21 @@
   <body>
     <h1>Rock, Paper, Scissors Game!</h1>
     <div class="container">
-    <button id="Rock">Rock</button>
-    <button id="Scissors">Scissors</button>
-    <button id="Paper">Paper</button>
+      <button id="Rock">Rock</button>
+      <button id="Scissors">Scissors</button>
+      <button id="Paper">Paper</button>
     </div>
+    <div class="round">
+      <p class="userScore">Your score:</p>
+      <p class="computerScore">The enemies' score:</p>
+      <p class="roundResult"></p>
+    </div>
+    <div class="result"></div>
     <script>
       let userScore = 0;
       let computerScore = 0;
       // This is a function which will randomly select one of rock, paper or scissors
-      function Math_random(num) {
-        return Math.floor(Math.random(num) * +num);
-      }
+
       const getComputerChoice = () => {
         // const gameArray = ['Rock', 'Paper', 'Scissors'];
         // const random_num=Math_random(3);
@@ -40,78 +44,107 @@
             break;
         }
       };
+
+      const roundResult = document.querySelector(".roundResult");
+
       //  Making the variables which indicate that the player and computer chose
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == "Rock" && computerSelection == "Rock") {
-          return "You have tied! You both chose Rock";
+          roundResult.textContent = "You have tied! You both chose Rock";
         } else if (playerSelection == "Rock" && computerSelection == "Paper") {
           computerScore++;
-          return "You lose! Paper beats Rock";
+          roundResult.textContent = "You lose! Paper beats Rock";
         } else if (
           playerSelection == "Rock" &&
           computerSelection == "Scissors"
         ) {
           userScore++;
-          return "You win! Rock beats Scissors";
+          roundResult.textContent = "You win! Rock beats Scissors";
         } else if (
           playerSelection == "Scissors" &&
           computerSelection == "Rock"
         ) {
           computerScore++;
-          return "You lose! Rock beats Scissors";
+          roundResult.textContent = "You lose! Rock beats Scissors";
         } else if (
           playerSelection == "Scissors" &&
           computerSelection == "Paper"
         ) {
           userScore++;
-          return "You win! Scissors beats Paper";
+          roundResult.textContent = "You win! Scissors beats Paper";
         } else if (
           playerSelection == "Scissors" &&
           computerSelection == "Scissors"
         ) {
-          return "You have tied! You both chose Scissors";
+          roundResult.textContent = "You have tied! You both chose Scissors";
         } else if (playerSelection == "Paper" && computerSelection == "Rock") {
           userScore++;
-          return "You win! Paper beats Rock";
+          roundResult.textContent = "You win! Paper beats Rock";
         } else if (
           playerSelection == "Paper" &&
           computerSelection == "Scissors"
         ) {
           computerScore++;
-          return "You lose! Scissors beat Paper";
+          roundResult.textContent = "You lose! Scissors beat Paper";
         } else if (playerSelection == "Paper" && computerSelection == "Paper") {
-          return "You have tied! You both chose Paper";
+          roundResult.textContent = "You have tied! You both chose Paper";
         }
       }
-    //   Prompt for Rock, Paper or Scissors and a function which will return the
-    //   answer with a capital letter at the start and lower case else   
-      // let promptPlayer = prompt('Choose Rock, Paper or Scissors Please');
 
-    function normalise(str) {
-        let newString = str[0].toUpperCase() + (str.substring(1)).toLowerCase();
-        return newString;
-    }
-
-    //   Assigning a new variable name and creating a game function which plays 
-    //   and counts the scores of each player
-      let playerSelection = normalise(promptPlayer);
       let computerSelection = getComputerChoice();
-      const game = () => {
-        for (let i = 0; i < 15; i++) {
-          let computerSelection = getComputerChoice();
-          playRound(playerSelection, computerSelection);
-          console.log([userScore, computerScore]);
-        }
-        if (userScore > computerScore) {
-             console.log('Well done! You have beaten the machine!');
-            }  else if (computerScore > userScore) {
-             console.log('Oh no! You have been beaten by the machine!');
-            } else if (computerScore == userScore) {
-             console.log('So close! You have tied!');
-            }
-      };
-      console.log(game);
 
+      const btns = document.querySelectorAll("button");
+
+      const resultBox = document.querySelector(".result");
+
+      const userCount = document.querySelector(".userScore");
+
+      const computerCount = document.querySelector(".computerScore");
+
+      const replaceText = document.createTextNode(" ");
+
+      btns.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          let computerSelection = getComputerChoice();
+          if (userScore < 5 && computerScore < 5) {
+            playRound(e.target.textContent, computerSelection);
+            userCount.textContent = "Your Score: " + `${userScore}`;
+            computerCount.textContent = "The enemies' Score: " + `${computerScore}`;
+          } else if (userScore == 5) {
+            resultBox.textContent = "Well done! You have beaten the machine!";
+          } else if (computerScore == 5) {
+            resultBox.textContent =
+              "Oh no! You have been beaten by the machine!";
+          }
+        });
+      });
+
+      //   Assigning a new variable name and creating a game function which plays
+      //   and counts the scores of each player
+
+      // const game = () => {
+      //     let computerSelection = getComputerChoice();
+      //     playRound(playerSelection, computerSelection);
+      //     console.log([userScore, computerScore]);
+      //   if (userScore > computerScore) {
+      //        console.log('Well done! You have beaten the machine!');
+      //       }  else if (computerScore > userScore) {
+      //        console.log('Oh no! You have been beaten by the machine!');
+      //       } else if (computerScore == userScore) {
+      //        console.log('So close! You have tied!');
+      //       }
+      // };
+      // console.log(game);
+
+      // Helper Functions
+      function normalise(str) {
+        let newString = str[0].toUpperCase() + str.substring(1).toLowerCase();
+        return newString;
+      }
+
+      function Math_random(num) {
+        return Math.floor(Math.random(num) * +num);
+      }
     </script>
   </body>
 </html>
